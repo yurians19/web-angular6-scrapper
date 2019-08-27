@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-6" [nbSpinner]="loadingList" nbSpinnerStatus="danger" nbSpinnerSize="xlarge">
+    <nb-card  class="float-center">
+      <nb-card-header>Crear nuevo usuario</nb-card-header>
+      <nb-card-body>
+        <div class="input-group input-group-border-only">
+          <input type="text" placeholder="email" [(ngModel)]="email" class="form-control"/>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="password" placeholder="contraseña">
+          <span class="input-group-append">
+          </span>
+        </div>
+        <button class="btn btn-success" (click)="saveUser()">Guardar</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6" [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="xlarge">
+    <nb-card>
+      <nb-card-header>
+        Lista de Usuarios
+      </nb-card-header>
+      <nb-list>
+        <nb-list-item *ngFor="let user of users;let i=index">
+            <span>{{ user.email }}</span>
+            <i (click)="deleteUser(user.email)" class="ion-trash-b float-right" title="eliminar"></i>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </div>
+</div>
+
